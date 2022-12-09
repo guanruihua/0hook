@@ -1,8 +1,10 @@
-// import { useCallback, useState } from 'react';
+import { useState, useCallback } from 'react';
 
-// // Hook
-export function useBoolean(initialState = false): any {
-//   const [state, setState] = useState(initialState);
-//   const toggle: any = useCallback(() => setState(state => !state), []);
-//   return [state, toggle]
+export function useBoolean(initialState = true): [boolean, () => void] {
+	const [state, setState] = useState<boolean>(initialState)
+
+	return [
+		state,
+		useCallback(() => setState(state => !state), [])
+	]
 }

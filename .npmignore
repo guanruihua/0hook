@@ -10,3 +10,8 @@ tsconfig.json
 rollup.config.*
 md.ts
 node_modules/
+.babelrc
+*.config.js
+config/
+example/
+public/
