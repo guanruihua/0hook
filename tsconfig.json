@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "module": "esnext",
+    "target": "es6",
+    "jsx": "react",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "baseUrl": "./",
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "paths": {
+      "@/*": ["./src/*"],
+    },
+    "plugins": [{ "name": "typescript-plugin-css-modules" }]
+  },
+  "include": ["src","src/lib", "node_module/**/*.d.ts"],
+  "exclude": [
+    "node_module",
+  ]
+}
