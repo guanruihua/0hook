@@ -1,8 +1,8 @@
 export function virtualService<xResult = any, xError = any>(
   result: xResult,
   error: xError,
-  flag: boolean = true,
-  delay: number = 500
+  flag = true,
+  delay = 500
 ): () => Promise<any> {
   return function (): Promise<xResult | xError> {
     return new Promise((

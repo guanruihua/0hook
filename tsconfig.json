@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "noImplicitAny": true,
-    "module": "esnext",
-    "target": "es6",
+    "module": "ESNext",
+    "target": "ESNext",
     "jsx": "react",
     "allowJs": true,
     "moduleResolution": "node",
@@ -10,15 +10,35 @@
     "experimentalDecorators": true,
     "resolveJsonModule": true,
     "baseUrl": "./",
+    "removeComments": true,
+    "strict": false,
+    "strictNullChecks": true,
+    "esModuleInterop": true,
+    "declaration": true,
+    "declarationDir": "dist",
+    "declarationMap": true,
+    "outDir": "dist",
     "preserveConstEnums": true,
     "sourceMap": true,
     "paths": {
-      "@/*": ["./src/*"],
-    },
-    "plugins": [{ "name": "typescript-plugin-css-modules" }]
+      "@/*": [
+        "./src/*"
+      ],
+    }
   },
-  "include": ["src","src/lib", "node_module/**/*.d.ts"],
+  "include": [
+    "src",
+    "src/lib",
+    "node_module/**/*.d.ts",
+    "components/**/*",
+    "src/**/*",
+    "**/*.d.ts"
+  ],
   "exclude": [
     "node_module",
+    "dist",
+    "**/*/__test__/*",
+    "example/**/*",
+    "config/*.ts"
   ]
 }

@@ -8,7 +8,7 @@ const ProgressBarWebpackPlugin = require('progress-bar-webpack-plugin')
 module.exports = {
 
   entry: {
-    app: './src/index.tsx',
+    app: './example/index.tsx',
   },
   output: {
     publicPath: '/',

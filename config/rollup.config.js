@@ -5,14 +5,13 @@ import resolve from 'rollup-plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import { eslint } from 'rollup-plugin-eslint'
 import { DEFAULT_EXTENSIONS } from '@babel/core'
-import { terser } from 'rollup-plugin-terser'
+// import { terser } from 'rollup-plugin-terser'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 import dts from 'rollup-plugin-dts'
 import pkg from '../package.json'
 
 const paths = {
-	input: path.join(__dirname, '../src/lib/index.ts'),
-	// input: path.join(__dirname, './src/index.ts'),
+	input: path.join(__dirname, '../src/index.ts'),
 	output: path.join(__dirname, '../lib')
 }
 
@@ -38,9 +37,6 @@ const rollupConfig = [{
 	external: [
 		'react',
 		'react-dom',
-		// 'classname',
-		// 'react-is',
-		// '**/node_modules/**'
 	],
 	plugins: [
 		peerDepsExternal({

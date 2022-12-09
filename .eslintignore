@@ -4,4 +4,7 @@ lib/
 src/*/__test__
 md.ts
 rollup.config.ts
+tsconfig.json
 config/
+example/
+commitlint.config.js
