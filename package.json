@@ -22,6 +22,11 @@
     "React",
     "hooks"
   ],
+  "bugs": "https://github.com/guanruihua/0hook/issues",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:guanruihua/0hook.git"
+  },
   "author": "ruihuag",
   "license": "MIT",
   "peerDependencies": {
