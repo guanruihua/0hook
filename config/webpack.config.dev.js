@@ -4,7 +4,8 @@ const path = require('path')
 
 const devServer = {
   port: 3456,
-  host: '0.0.0.0',
+  open: false,
+  // host: '0.0.0.0',
   watchContentBase: true,
   inline: true,
   stats: 'errors-only',

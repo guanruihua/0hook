@@ -1,3 +1,5 @@
-declare function useSetState<T extends Record<string, any>>(initialState?: T): [T, (patch: Partial<T> | ((prevState: T) => Partial<T>)) => void];
+import { ObjectType } from 'abandonjs';
+
+declare function useSetState<T extends ObjectType>(initialState?: T): [T, (patch: Partial<T> | ((prevState: T) => Partial<T>)) => void];
 
 export { useSetState };

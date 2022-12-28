@@ -4,11 +4,12 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ProgressBarWebpackPlugin = require('progress-bar-webpack-plugin')
+const { ESBuildPlugin } = require('esbuild-loader')
 
 module.exports = {
 
   entry: {
-    app: './example/index.tsx',
+    app: './background/index.tsx',
   },
   output: {
     publicPath: '/',
@@ -17,14 +18,14 @@ module.exports = {
   },
   resolve: {
     alias: {
-      "@": path.resolve('src'),
-      "lib": path.resolve('lib'),
+      "@": path.resolve('src')
     },
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.d.ts'],
   },
   plugins: [
     new CleanWebpackPlugin(),
     new ProgressBarWebpackPlugin(),
+    new ESBuildPlugin(),
     new webpack.DefinePlugin({
       "process.env.PROJECT_ENV": JSON.stringify(process.env.PROJECT_ENV),
       "process.env.modules": JSON.stringify(process.env.npm_config_modules),
@@ -40,7 +41,17 @@ module.exports = {
   module: {
     rules: [
       { test: /\.(js|jsx)$/, loader: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.(ts|tsx)$/, loader: 'ts-loader' },
+      {
+        test: /\.[jt]sx?$/,
+        exclude: /node_modules/,
+        loader: 'esbuild-loader',
+        options: {
+          loader: 'tsx',
+          target: 'esnext',
+          jsxFactory: 'React.createElement',
+          jsxFragment: 'React.Fragment',
+        },
+      },
       {
         test: /\.less$/,
         exclude: /node_modules/,

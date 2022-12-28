@@ -10,6 +10,8 @@ export type MenuObject = RouteObject & _MenuObject
 const list = [
 	'useSetState',
 	'useBoolean',
+	'useMap',
+	'useObject'
 ].map(name => {
 	return {
 		name,
@@ -21,8 +23,6 @@ const list = [
 		</Suspense>
 	}
 })
-
-// console.log(list)
 
 export const menu: MenuObject[] = [
 	{
