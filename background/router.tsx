@@ -10,6 +10,7 @@ export type MenuObject = RouteObject & _MenuObject
 const list = [
 	'useSetState',
 	'useBoolean',
+	'useCount',
 	'useMap',
 	'useObject'
 ].map(name => {
