@@ -18,6 +18,7 @@ specifiers:
   '@typescript-eslint/parser': ^5.33.0
   abandonjs: 2.4.2
   ahooks: ^3.1.4
+  asura-eye: ^0.5.0
   autoprefixer: ^10.3.1
   babel-core: ^6.26.3
   babel-loader: ^8.1.0
@@ -83,6 +84,7 @@ devDependencies:
   '@typescript-eslint/parser': 5.46.0_ixh6nceclvqov4hcu5gszby2fi
   abandonjs: 2.4.2
   ahooks: 3.7.0_react@18.2.0
+  asura-eye: 0.5.0
   autoprefixer: 10.4.8_postcss@8.4.16
   babel-core: 6.26.3
   babel-loader: 8.2.5_ek5xjphmhhlp4s6v3bkgeyzk3a
@@ -2470,6 +2472,11 @@ packages:
   /astral-regex/1.0.0:
     resolution: {integrity: sha512-+Ryf6g3BKoRc7jfp7ad8tM4TtMiaWvbF/1/sQcZPkkS7ag3D5nMBCe2UfOTONtAkaG0tO0ij3C5Lwmf1EiyjHg==}
     engines: {node: '>=4'}
+    dev: true
+
+  /asura-eye/0.5.0:
+    resolution: {integrity: sha512-94giiO+hysJOBtNNooXfV2t7S2EUkIPdOvx6QXdyKaT8i396vbEXW1nIOUM4O9dwM1H7/AUCbAoswgWaMk0N0g==}
+    engines: {node: '>=16'}
     dev: true
 
   /async-each/1.0.3:

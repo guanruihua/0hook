@@ -1,6 +1,11 @@
 import { ObjectType } from 'abandonjs';
 
-declare function useSetState<T extends ObjectType>(initialState?: T): [T, (patch: Partial<T> | ((prevState: T) => Partial<T>)) => void];
+declare type UseSetState<T extends ObjectType> = [
+    T,
+    (patch: Partial<T> | ((prevState: T) => Partial<T>)) => void,
+    (props?: string[]) => void
+];
+declare function useSetState<T extends ObjectType>(initialState?: T): UseSetState<T>;
 
 declare type Options = {
     min?: number;
@@ -29,4 +34,4 @@ interface Actions<Value> {
 }
 declare function useMap<Value>(initialValue?: Iterable<readonly [UseMapKey, Value]>): [Map<UseMapKey, Value>, Actions<Value>];
 
-export { Options, useBoolean, useCount, useMap, useObject, useSetState };
+export { Options, UseSetState, useBoolean, useCount, useMap, useObject, useSetState };
