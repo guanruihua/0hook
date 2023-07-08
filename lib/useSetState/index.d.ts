@@ -1,5 +1,5 @@
 import { ObjectType } from 'abandonjs';
-export declare type UseSetState<T extends ObjectType> = [
+export declare type UseSetState<T extends ObjectType> = readonly [
     T,
     (patch: Partial<T> | ((prevState: T) => Partial<T>)) => void,
     (props?: string[]) => void

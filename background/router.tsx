@@ -8,11 +8,13 @@ interface _MenuObject extends Record<string, any> {
 export type MenuObject = RouteObject & _MenuObject
 
 const list = [
-	'useSetState',
 	'useBoolean',
 	'useCount',
+	'useSetState',
+	'useObject',
 	'useMap',
-	'useObject'
+	'useUpdate',
+	'useStorage',
 ].map(name => {
 	return {
 		name,

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { isNumber } from 'abandonjs'
+import { isNumber } from 'asura-eye'
 
 export type Options = {
 	min?: number,
@@ -18,13 +18,20 @@ function getTargetValue(val: number, options: Options = {}) {
 	return target;
 }
 
+/**
+ * @title useCount 
+ * @description 计数
+ * @param initialState {number}
+ * @param options {min?:number,max?:number}
+ * @returns [number, (value?:number)=>void]
+ */
 export function useCount(initialState: number, options: Options = {})
-	: readonly [number, (value: number) => void] {
+	: readonly [number, (value?: number) => void] {
 
 	const [state, setStateTemp] = useState<number>(getTargetValue(initialState, options))
 
-	const setState = (value: number) => {
-		const result = getTargetValue(value, options)
+	const setState = (value: number = state) => {
+		const result = getTargetValue(value + 1, options)
 		if (result === state) return;
 		setStateTemp(result)
 	}

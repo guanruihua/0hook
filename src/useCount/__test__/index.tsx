@@ -12,6 +12,12 @@ export default () => {
 			</button>
 		</div>
 		<div>
+			<button
+				onClick={() => updateState()}>
+				add Count(No Params)
+			</button>
+		</div>
+		<div>
 			Count:{JSON.stringify(state)}
 		</div>
 	</div>

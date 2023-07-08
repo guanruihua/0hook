@@ -10,7 +10,13 @@ interface Actions<ObjectValueType = ObjectType> {
 	reset: (force?: boolean) => void
 }
 
-export function useObject<ObjectValueType = ObjectType>(initialValue?: ObjectValueType): [ObjectValueType, Actions<ObjectValueType>] {
+/**
+ * @title useObject<Object>
+ * @description 管理对象状态
+ * @param initialValue {?Object}
+ * @returns [object, Actions<Object>]
+ */
+export function useObject<ObjectValueType = ObjectType>(initialValue?: ObjectValueType): readonly [ObjectValueType, Actions<ObjectValueType>] {
 
 	const getInitialValue = () => initialValue || {} as ObjectValueType
 
@@ -47,5 +53,5 @@ export function useObject<ObjectValueType = ObjectType>(initialValue?: ObjectVal
 			reset,
 			setObject
 		}
-	]
+	] as const
 }

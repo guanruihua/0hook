@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { ObjectType } from 'abandonjs'
 import { isEffectArray, isEmpty } from 'asura-eye'
 
-
 /**
  * @title UseSetState<T>
  * @description 类似 setState 的使用
@@ -10,7 +9,7 @@ import { isEffectArray, isEmpty } from 'asura-eye'
  * @param 1 setState {T} 修改状态
  * @param 2 resetState {T} 恢复默认状态
  */
-export type UseSetState<T extends ObjectType> = [
+export type UseSetState<T extends ObjectType> = readonly [
 	T,
 	(patch: Partial<T> | ((prevState: T) => Partial<T>)) => void,
 	(props?: string[]) => void,
@@ -47,5 +46,5 @@ export function useSetState<T extends ObjectType>(initialState: T = {} as T)
 			}
 			setState(initialState)
 		}
-	]
+	] as const
 }

@@ -11,7 +11,13 @@ interface Actions<Value> {
 	get: (key: UseMapKey) => Value | undefined
 }
 
-export function useMap<Value>(initialValue?: Iterable<readonly [UseMapKey, Value]>): [Map<UseMapKey, Value>, Actions<Value>] {
+/**
+ * @title useMap
+ * @description Map数据管理
+ * @param initialValue {Map}
+ * @returns {[Map, Actions]}
+ */
+export function useMap<Value>(initialValue?: Iterable<readonly [UseMapKey, Value]>): readonly [Map<UseMapKey, Value>, Actions<Value>] {
 
 	const getInitialValue = () => initialValue === undefined ? new Map() : new Map(initialValue)
 
@@ -50,5 +56,5 @@ export function useMap<Value>(initialValue?: Iterable<readonly [UseMapKey, Value
 		remove,
 		reset,
 		get,
-	}]
+	}] as const
 }
