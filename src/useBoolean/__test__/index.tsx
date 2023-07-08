@@ -1,9 +1,8 @@
-import React, { useState } from "react"
+import React from "react"
 import { stringify } from 'abandonjs'
 import { useBoolean } from '..'
 
 export default function Demo() {
-	console.log('App组件渲染了！');
 	const [bool, setBool] = useBoolean(true)
 	return (
 		<div>
@@ -13,6 +12,11 @@ export default function Demo() {
 				}}
 			>
 				Toggle
+			</button>
+			<button onClick={()=>{
+				setBool(true)
+			}}>
+				set true
 			</button>
 			<div>value: {stringify(bool)}</div>
 		</div>

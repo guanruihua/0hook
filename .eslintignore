@@ -7,4 +7,5 @@ rollup.config.ts
 tsconfig.json
 config/
 example/
+background/
 commitlint.config.js
