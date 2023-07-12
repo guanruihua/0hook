@@ -1,6 +1,6 @@
 {
   "name": "0hook",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "react hooks",
   "main": "lib/index.ts",
   "module": "lib/index.esm.js",
