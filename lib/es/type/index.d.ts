@@ -46,4 +46,8 @@ declare const useSessionStorage: (key: string, initialValue?: string | null) => 
 
 declare const useUpdate: () => () => void;
 
-export { Options, UseSetState, UseStorageOption, useBoolean, useCount, useLocalStorage, useMap, useObject, useSessionStorage, useSetState, useStorage, useUpdate };
+declare function useInterval(callback: () => void, delay: number | null): void;
+
+declare function useSetTimeout(callback: () => void, delay: number | null): void;
+
+export { Options, UseSetState, UseStorageOption, useBoolean, useCount, useInterval, useLocalStorage, useMap, useObject, useSessionStorage, useSetState, useSetTimeout, useStorage, useUpdate };
