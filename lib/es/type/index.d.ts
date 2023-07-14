@@ -8,15 +8,15 @@ declare type Options = {
 };
 declare function useCount(initialState: number, options?: Options): readonly [number, (value?: number) => void];
 
-declare type UseMapKey = string | number;
-interface Actions$1<Value> {
-    set: (key: UseMapKey, value: Value, force?: boolean) => void;
-    setAll: (newMap: Iterable<readonly [UseMapKey, Value]>, force?: boolean) => void;
-    remove: (key: UseMapKey) => void;
+interface UseMapAction<Key = string, Value = any> {
+    set: (key: Key, value: Value, force?: boolean) => void;
+    setAll: (newMap: Iterable<readonly [Key, Value]>, force?: boolean) => void;
+    remove: (key: Key) => void;
     reset: (force?: boolean) => void;
-    get: (key: UseMapKey) => Value | undefined;
+    get: (key: Key) => Value | undefined;
+    keys: () => Key[];
 }
-declare function useMap<Value>(initialValue?: Iterable<readonly [UseMapKey, Value]>): readonly [Map<UseMapKey, Value>, Actions$1<Value>];
+declare function useMap<Key = string, Value = any>(initialValue?: Iterable<readonly [Key, Value]>): readonly [Map<Key, Value>, UseMapAction<Key, Value>];
 
 declare type ObjectValue<UseObjectType = ObjectType> = UseObjectType[keyof UseObjectType];
 interface Actions<ObjectValueType = ObjectType> {
@@ -50,4 +50,4 @@ declare function useInterval(callback: () => void, delay: number | null): void;
 
 declare function useSetTimeout(callback: () => void, delay: number | null): void;
 
-export { Options, UseSetState, UseStorageOption, useBoolean, useCount, useInterval, useLocalStorage, useMap, useObject, useSessionStorage, useSetState, useSetTimeout, useStorage, useUpdate };
+export { Options, UseMapAction, UseSetState, UseStorageOption, useBoolean, useCount, useInterval, useLocalStorage, useMap, useObject, useSessionStorage, useSetState, useSetTimeout, useStorage, useUpdate };

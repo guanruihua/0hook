@@ -1,29 +1,29 @@
 import { useState } from 'react'
 import { isEqual } from 'abandonjs'
 
-type UseMapKey = string | number
-
-interface Actions<Value> {
-	set: (key: UseMapKey, value: Value, force?: boolean) => void
-	setAll: (newMap: Iterable<readonly [UseMapKey, Value]>, force?: boolean) => void
-	remove: (key: UseMapKey) => void
+export interface UseMapAction<Key = string, Value = any> {
+	set: (key: Key, value: Value, force?: boolean) => void
+	setAll: (newMap: Iterable<readonly [Key, Value]>, force?: boolean) => void
+	remove: (key: Key) => void
 	reset: (force?: boolean) => void
-	get: (key: UseMapKey) => Value | undefined
+	get: (key: Key) => Value | undefined
+	keys: () => Key[]
 }
 
 /**
- * @title useMap
+ * @title useMap<Key,Value>
  * @description Map数据管理
  * @param initialValue {Map}
  * @returns {[Map, Actions]}
  */
-export function useMap<Value>(initialValue?: Iterable<readonly [UseMapKey, Value]>): readonly [Map<UseMapKey, Value>, Actions<Value>] {
+export function useMap<Key = string, Value = any>(initialValue?: Iterable<readonly [Key, Value]>)
+	: readonly [Map<Key, Value>, UseMapAction<Key, Value>] {
 
 	const getInitialValue = () => initialValue === undefined ? new Map() : new Map(initialValue)
 
-	const [map, setMap] = useState<Map<UseMapKey, Value>>(() => getInitialValue())
+	const [map, setMap] = useState<Map<Key, Value>>(() => getInitialValue())
 
-	const set = (key: UseMapKey, value: Value, force = false) => {
+	const set = (key: Key, value: Value, force = false) => {
 		if (isEqual(map.get(key), value) && !force) {
 			return
 		}
@@ -34,11 +34,11 @@ export function useMap<Value>(initialValue?: Iterable<readonly [UseMapKey, Value
 		})
 	}
 
-	const setAll = (newMap: Iterable<readonly [UseMapKey, Value]>) => {
+	const setAll = (newMap: Iterable<readonly [Key, Value]>) => {
 		setMap(new Map(newMap))
 	}
 
-	const remove = (key: UseMapKey) => {
+	const remove = (key: Key) => {
 		setMap((prev) => {
 			const temp = new Map(prev)
 			temp.delete(key)
@@ -48,9 +48,11 @@ export function useMap<Value>(initialValue?: Iterable<readonly [UseMapKey, Value
 
 	const reset = () => setMap(getInitialValue())
 
-	const get = (key: UseMapKey) => map.get(key)
+	const get = (key: Key) => map.get(key)
+	const keys = () => Array.from(map.keys())
 
 	return [map, {
+		keys,
 		set,
 		setAll,
 		remove,
