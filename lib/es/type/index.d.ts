@@ -28,8 +28,8 @@ interface Actions<ObjectValueType = ObjectType> {
 declare function useObject<ObjectValueType = ObjectType>(initialValue?: ObjectValueType): readonly [ObjectValueType, Actions<ObjectValueType>];
 
 declare type UseSetState<T extends ObjectType> = readonly [
-    T,
-    (patch: Partial<T> | ((prevState: T) => Partial<T>)) => void,
+    Partial<T>,
+    (patch: Partial<T> | ((prevState: Partial<T>) => Partial<T>), cover?: boolean) => void,
     (props?: string[]) => void
 ];
 declare function useSetState<T extends ObjectType>(initialState?: T): UseSetState<T>;

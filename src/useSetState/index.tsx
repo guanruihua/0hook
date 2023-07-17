@@ -10,8 +10,8 @@ import { isEffectArray, isEmpty } from 'asura-eye'
  * @param 2 resetState {T} 恢复默认状态
  */
 export type UseSetState<T extends ObjectType> = readonly [
-	T,
-	(patch: Partial<T> | ((prevState: T) => Partial<T>)) => void,
+	Partial<T>,
+	(patch: Partial<T> | ((prevState: Partial<T>) => Partial<T>), cover?: boolean) => void,
 	(props?: string[]) => void,
 ]
 
@@ -24,14 +24,15 @@ export type UseSetState<T extends ObjectType> = readonly [
 export function useSetState<T extends ObjectType>(initialState: T = {} as T)
 	: UseSetState<T> {
 
-	const [state, setState] = useState<T>(initialState)
+	const [state, setState] = useState<Partial<T>>(initialState)
 	return [
 		state,
-		(patch: Partial<T> | ((prevState: T) => Partial<T>)): void => {
-			if (typeof patch === 'function') {
-				setState({ ...state, ...patch(state) })
+		(patch: Partial<T> | ((prevState: Partial<T>) => Partial<T>), cover = false): void => {
+			const coverState: Partial<T> = typeof patch === 'function' ? patch(state) : patch
+			if (cover) {
+				setState(coverState)
 			} else {
-				setState({ ...state, ...patch })
+				setState({ ...state, ...coverState })
 			}
 		},
 		(props?: string[]): void => {
