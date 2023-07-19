@@ -17,6 +17,7 @@ const list = [
 	'useStorage',
 	'useInterval',
 	'useSetTimeout',
+	'useValue',
 ].map(name => {
 	return {
 		name,
