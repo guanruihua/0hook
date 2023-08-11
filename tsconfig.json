@@ -20,6 +20,10 @@
     "outDir": "dist",
     "preserveConstEnums": true,
     "sourceMap": true,
+    "types": [
+      "node",
+      "jest"
+    ],
     "paths": {
       "@/*": [
         "./src/*"

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { ObjectType } from 'abandonjs'
-import { isEffectArray, isEmpty } from 'asura-eye'
+import { isEffectArray, isNumber, isString } from 'asura-eye'
 
 /**
  * @title UseSetState<T>
@@ -12,7 +12,7 @@ import { isEffectArray, isEmpty } from 'asura-eye'
 export type UseSetState<T extends ObjectType> = readonly [
 	Partial<T>,
 	(patch: Partial<T> | ((prevState: Partial<T>) => Partial<T>), cover?: boolean) => void,
-	(props?: string[]) => void,
+	(props?: (string | number)[]) => void,
 ]
 
 /**
@@ -35,12 +35,12 @@ export function useSetState<T extends ObjectType>(initialState: T = {} as T)
 				setState({ ...state, ...coverState })
 			}
 		},
-		(props?: string[]): void => {
+		(props?: (string | number)[]): void => {
 			if (isEffectArray(props)) {
 				const newState: Partial<T> = { ...state }
 				props.forEach((prop) => {
-					if (isEmpty(prop)) return;
-					(newState as ObjectType)[prop] = undefined
+					if (isString(prop) || isNumber(prop))
+						(newState as ObjectType)[prop] = initialState[prop]
 				})
 				setState(newState as T)
 				return

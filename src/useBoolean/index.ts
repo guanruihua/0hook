@@ -4,7 +4,7 @@ import { isBoolean } from 'asura-eye';
 /**
  * @title useBoolean
  * @description 布尔值切换
- * @param initialState {boolean}
+ * @param initialState {boolean=true}
  * @returns [boolean, ()=>void]
  */
 export function useBoolean(initialState = true): readonly [boolean, (value?: boolean) => void] {

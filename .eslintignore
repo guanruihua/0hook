@@ -9,3 +9,4 @@ config/
 example/
 background/
 commitlint.config.js
+jest.config.js
