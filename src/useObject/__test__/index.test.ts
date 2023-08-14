@@ -2,8 +2,35 @@ import { act, renderHook } from "@testing-library/react";
 import { useObject } from '..'
 
 describe('useObject', () => {
+
+	it('init', async () => {
+		const { result } = renderHook(() => useObject())
+		expect(result.current[0]).toEqual({})
+	})
 	
-	it('useObject-set', async () => {
+	it('reset', async () => {
+		const { result } = renderHook(() => useObject({
+			a: 1,
+			b: '2',
+			c: {
+				d: '3-1'
+			}
+		}))
+
+		act(() => {
+			result.current[1].reset()
+		})
+
+		expect(result.current[0]).toEqual({
+			a: 1,
+			b: '2',
+			c: {
+				d: '3-1'
+			}
+		})
+	})
+
+	it('set', async () => {
 		const { result } = renderHook(() => useObject({
 			a: 1,
 			b: '2',
@@ -24,6 +51,10 @@ describe('useObject', () => {
 			result.current[1].set('a', 3)
 		})
 
+		act(() => {
+			result.current[1].set('a', 3)
+		})
+
 		expect(result.current[0]).toEqual({
 			a: 3,
 			b: '2',
@@ -35,7 +66,7 @@ describe('useObject', () => {
 	});
 
 
-	it('useObject', async () => {
+	it('simple', async () => {
 		const { result } = renderHook(() => useObject({
 			a: 1,
 			b: '2',

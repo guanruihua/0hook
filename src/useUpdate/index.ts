@@ -6,7 +6,7 @@ import { useCallback, useState } from 'react';
  * @returns {()=>void}
  */
 export const useUpdate = () => {
-	const [, setState] = useState({});
+	const [, setState] = useState(1);
 
-	return useCallback(() => setState({}), []);
+	return useCallback(() => setState(1), []);
 }

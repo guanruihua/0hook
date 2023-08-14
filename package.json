@@ -9,6 +9,7 @@
     "commitlint": "commitlint -e",
     "prepare": "husky install",
     "reload": "rimraf node_modules && cnpm install",
+    "test": "jest",
     "start": "webpack serve --config ./config/webpack.config.dev.js",
     "build": "npx rollup -c ./config/rollup.config.js",
     "git": "node config/script/git.js",
