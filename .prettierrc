@@ -9,5 +9,5 @@
 	"htmlWhitespaceSensitivity": "ignore",
 	"endOfLine": "auto",
 	"trailingComma": "none",
-	"arrowParens": "avoid"
+	"arrowParens": "always"
 }

@@ -65,8 +65,8 @@ devDependencies:
     specifier: ^5.33.0
     version: 5.46.0(eslint@8.29.0)(typescript@4.7.4)
   abandonjs:
-    specifier: 3.3.0
-    version: 3.3.0
+    specifier: ^3.5.2
+    version: 3.5.2
   asura-eye:
     specifier: ^0.6.1
     version: 0.6.1
@@ -103,6 +103,9 @@ devDependencies:
   eslint-plugin-react-hooks:
     specifier: ^4.6.0
     version: 4.6.0(eslint@8.29.0)
+  harpe:
+    specifier: ^0.2.3
+    version: 0.2.3
   html-webpack-plugin:
     specifier: ^5.3.2
     version: 5.5.0(webpack@5.48.0)
@@ -2736,8 +2739,8 @@ packages:
     resolution: {integrity: sha512-j2afSsaIENvHZN2B8GOpF566vZ5WVk5opAiMTvWgaQT8DkbOqsTfvNAvHoRGU2zzP8cPoqys+xHTRDWW8L+/BA==}
     dev: true
 
-  /abandonjs@3.3.0:
-    resolution: {integrity: sha512-F/EgCxksrbN1N//q+LL7wwsSuVf3z20wE4Zx2fi4aw0m6o6cPJRemx4FIJr2+EdpY0cGnO8MSQ0sbCjqoxrgYQ==}
+  /abandonjs@3.5.2:
+    resolution: {integrity: sha512-Gq2crcz+NCBOlCfZHycYZKCIFrAUT74eV3bW6+Iwioj5J173OXLNOv5BI4W756tWpdU3cAvIpntE6vCit0L7Tw==}
     engines: {node: '>=16'}
     dev: true
 
@@ -5579,6 +5582,13 @@ packages:
   /hard-rejection@2.1.0:
     resolution: {integrity: sha512-VIZB+ibDhx7ObhAe7OVtoEbuP4h/MuOTHJ+J8h/eBXotJYl0fBgR72xDFCKgIh22OJZIOVNxBMWuhAr10r8HdA==}
     engines: {node: '>=6'}
+    dev: true
+
+  /harpe@0.2.3:
+    resolution: {integrity: sha512-/rcon3Oc7MCaxJQk3MFvpczPvPIG9AZ2ihICGm09dDY/8XQ669YgROEnLqSIfVWLm8KDDaa3xbuQLRH32ePN+A==}
+    engines: {node: '>=16'}
+    dependencies:
+      xlsx: '@cdn.sheetjs.com/xlsx-0.20.0/xlsx-0.20.0.tgz'
     dev: true
 
   /has-ansi@2.0.0:
@@ -10656,4 +10666,12 @@ packages:
   /yocto-queue@0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
+    dev: true
+
+  '@cdn.sheetjs.com/xlsx-0.20.0/xlsx-0.20.0.tgz':
+    resolution: {tarball: https://cdn.sheetjs.com/xlsx-0.20.0/xlsx-0.20.0.tgz}
+    name: xlsx
+    version: 0.20.0
+    engines: {node: '>=0.8'}
+    hasBin: true
     dev: true

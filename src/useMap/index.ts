@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { isEqual } from 'abandonjs'
+import { equal } from 'abandonjs'
 
 export interface UseMapAction<Key = string, Value = any> {
 	set: (key: Key, value: Value, force?: boolean) => void
@@ -24,7 +24,7 @@ export function useMap<Key = string, Value = any>(initialValue?: Iterable<readon
 	const [map, setMap] = useState<Map<Key, Value>>(() => getInitialValue())
 
 	const set = (key: Key, value: Value, force = false) => {
-		if (isEqual(map.get(key), value) && !force) {
+		if (equal(map.get(key), value) && !force) {
 			return
 		}
 		setMap((prev) => {
