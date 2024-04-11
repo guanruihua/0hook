@@ -1,19 +1,22 @@
 {
+  "root": true,
   "parser": "@typescript-eslint/parser",
   "extends": [
     "eslint:recommended",
     "plugin:react-hooks/recommended",
     "plugin:@typescript-eslint/recommended"
   ],
-  "plugins": ["@typescript-eslint"],
+  "plugins": [
+    "@typescript-eslint"
+  ],
   "env": {
     "browser": true,
     "node": true,
     "es6": true
   },
   "parserOptions": {
-    "project": "./tsconfig.json",
-    "ecmaVersion": 2022,
+    "project": true,
+    "ecmaVersion": "latest",
     "sourceType": "module",
     "ecmaFeatures": {
       "experimentalObjectRestSpread": true

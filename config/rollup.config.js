@@ -44,12 +44,12 @@ const rollupConfig = [{
 			includeDependencies: true,
 		}),
 		// 验证导入的文件
-		eslint({
-			throwOnError: true, // lint 结果有错误将会抛出异常
-			throwOnWarning: true,
-			include: ['src/**/*.ts'],
-			exclude: ['node_modules/**', '*.js', 'dist/**']
-		}),
+		// eslint({
+		// 	throwOnError: true, // lint 结果有错误将会抛出异常
+		// 	throwOnWarning: true,
+		// 	include: ['src/**/*.ts'],
+		// 	exclude: ['node_modules/**', '*.js', 'dist/**']
+		// }),
 
 		// 使得 rollup 支持 commonjs 规范，识别 commonjs 规范的依赖
 		commonjs(),

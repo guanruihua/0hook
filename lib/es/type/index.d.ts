@@ -1,11 +1,28 @@
 import { ObjectType } from 'abandonjs';
+import { ObjectType as ObjectType$1 } from '0type';
 
+/**
+ * @title useBoolean
+ * @description 布尔值切换
+ * @param initialState {boolean=true}
+ * @returns [boolean, ()=>void]
+ */
 declare function useBoolean(initialState?: boolean): readonly [boolean, (value?: boolean) => void];
 
-declare type Options = {
+type Options = {
+    /**
+     * @default 0
+     */
     min?: number;
     max?: number;
 };
+/**
+ * @title useCount
+ * @description 计数
+ * @param initialState {number=0}
+ * @param options {min?:number,max?:number}
+ * @returns [number, (value?:number)=>void]
+ */
 declare function useCount(initialState?: number, options?: Options): readonly [number, (value?: number) => void];
 
 interface UseMapAction<Key = string, Value = any> {
@@ -16,36 +33,100 @@ interface UseMapAction<Key = string, Value = any> {
     get: (key: Key) => Value | undefined;
     keys: () => Key[];
 }
+/**
+ * @title useMap<Key,Value>
+ * @description Map数据管理
+ * @param initialValue {Map}
+ * @returns {[Map, Actions]}
+ */
 declare function useMap<Key = string, Value = any>(initialValue?: Iterable<readonly [Key, Value]>): readonly [Map<Key, Value>, UseMapAction<Key, Value>];
 
-declare type ObjectValue<UseObjectType = ObjectType> = UseObjectType[keyof UseObjectType];
+type ObjectValue<UseObjectType = ObjectType> = UseObjectType[keyof UseObjectType];
 interface UseObjectActions<ObjectValueType = ObjectType> {
+    /**
+     * @description 直接替换掉管理的值
+     * @param record {object}
+     */
     setObject: (record: ObjectValueType) => void;
+    /**
+     * @description 设置值
+     * @param key {string} 属性名
+     * @param value {unknown} 属性值
+     * @param force {boolean=false} false:若和当前值相等则不执行
+     */
     set: (key: keyof ObjectValueType, value: ObjectValue<ObjectValueType>, force?: boolean) => void;
+    /**
+     * @description 删除属性
+     * @param key {string} 删除的属性
+     */
     remove: (key: keyof ObjectValueType) => void;
+    /**
+     * @description 重置
+     * @param force {boolean=false} false:若和当前值相等则不执行
+     */
     reset: (force?: boolean) => void;
 }
+/**
+ * @title useObject<Object>
+ * @description 管理对象状态
+ * @param initialValue {?Object}
+ * @returns [object, Actions<Object>]
+ */
 declare function useObject<ObjectValueType = ObjectType>(initialValue?: ObjectValueType): readonly [ObjectValueType, UseObjectActions<ObjectValueType>];
 
-declare type UseSetState<T extends ObjectType> = readonly [
+/**
+ * @title UseSetState<T>
+ * @description 类似 setState 的使用
+ * @param 0 state {T} 状态
+ * @param 1 setState {T} 修改状态
+ * @param 2 resetState {T} 恢复默认状态
+ */
+type UseSetState<T extends ObjectType$1> = readonly [
     Partial<T>,
     (patch: Partial<T> | ((prevState: Partial<T>) => Partial<T>), cover?: boolean) => void,
     (props?: (string | number)[]) => void
 ];
-declare function useSetState<T extends ObjectType>(initialState?: T): UseSetState<T>;
+/**
+ * @title useSetState<T>
+ * @description 类似 setState 的使用
+ * @param initialState {T} 默认值
+ * @returns {UseSetState}
+ */
+declare function useSetState<T extends ObjectType$1>(initialState?: T): UseSetState<T>;
 
 interface UseStorageOption {
     storage?: Storage;
 }
-declare type UseStorageState<T = string> = readonly [value: T | null, setValue: (value: T) => void];
+type UseStorageState<T = string> = readonly [
+    value: T | null,
+    setValue: (value: T) => void
+];
 declare function useStorage<T = string>(key: string, initialValue?: T | null, options?: UseStorageOption): UseStorageState<T>;
 declare const useLocalStorage: (key: string, initialValue?: string | null) => UseStorageState<string>;
 declare const useSessionStorage: (key: string, initialValue?: string | null) => UseStorageState<string>;
 
+/**
+ * @title useUpdate
+ * @description 通过 点击事件刷新组件
+ * @returns {()=>void}
+ */
 declare const useUpdate: () => () => void;
 
+/**
+ * @title useInterval
+ * @description useEffect 和 setInterval 的使用, 主要解决React this指向问题
+ * @param callback {()=>void}
+ * @param delay {number|null}
+ * @returns {NodeJS.Timer|null}
+ */
 declare function useInterval(callback: () => void, delay: number | null): NodeJS.Timer | null;
 
+/**
+ * @title useSetTimeout
+ * @description useEffect 和 setTimeout 的使用, 主要解决React this指向问题
+ * @param callback {()=>void}
+ * @param delay {number|null}
+ */
 declare function useSetTimeout(callback: () => void, delay: number | null): void;
 
 export { Options, UseMapAction, UseObjectActions, UseSetState, UseStorageOption, UseStorageState, useBoolean, useCount, useInterval, useLocalStorage, useMap, useObject, useSessionStorage, useSetState, useSetTimeout, useStorage, useUpdate };

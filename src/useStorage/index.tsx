@@ -1,10 +1,13 @@
 import React from 'react'
-import { isEmpty } from 'asura-eye'
+import { isEmpty, isString } from 'asura-eye'
 
 export interface UseStorageOption {
   storage?: Storage
 }
-export type UseStorageState<T=string> = readonly [value: T | null, setValue: (value: T) => void]
+export type UseStorageState<T = string> = readonly [
+  value: T | null,
+  setValue: (value: T) => void
+]
 
 export function useStorage<T = string>(
   key: string,
@@ -15,18 +18,24 @@ export function useStorage<T = string>(
   const getDefaultValue = () =>
     isEmpty(storage.getItem(key)) ? initialValue : storage.getItem(key)
 
-  const [value, _setValue] = React.useState<T | null | any>(getDefaultValue() || null)
+  const [value, _setValue] = React.useState<T | null | any>(
+    getDefaultValue() || null
+  )
 
   const setValue = (value: T) => {
     _setValue(value)
-    // storage.setItem(key, value)
+    if (isString(value)) {
+      storage.setItem(key, value)
+    } else {
+      storage.setItem(key, JSON.stringify(value))
+    }
   }
 
   React.useEffect(() => {
     const tmpValue = storage.getItem(key)
     if (isEmpty(tmpValue)) return
     if (tmpValue !== value) {
-      // setValue(tmpValue)
+      setValue(tmpValue as T)
     }
   }, [key, setValue, storage])
 

@@ -1,6 +1,6 @@
 {
   "name": "0hook",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "react hooks",
   "main": "lib/index.ts",
   "module": "lib/index.esm.js",
@@ -35,6 +35,7 @@
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0"
   },
   "devDependencies": {
+    "0type": "workspace:^0.1.0",
     "@babel/core": "^7.11.1",
     "@babel/preset-env": "^7.15.0",
     "@babel/preset-react": "^7.10.4",
@@ -52,8 +53,8 @@
     "@types/react-router-dom": "^5.1.8",
     "@typescript-eslint/eslint-plugin": "^5.33.0",
     "@typescript-eslint/parser": "^5.33.0",
-    "abandonjs": "^3.5.2",
-    "asura-eye": "^0.6.1",
+    "abandonjs": "^3.8.0",
+    "asura-eye": "^0.9.1",
     "autoprefixer": "^10.3.1",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.1.0",
@@ -62,6 +63,7 @@
     "commitlint": "^17.3.0",
     "copy-webpack-plugin": "^9.0.1",
     "cross-env": "^7.0.3",
+    "css-loader": "^6.7.1",
     "esbuild-loader": "^2.20.0",
     "eslint": "^8.29.0",
     "eslint-plugin-react-hooks": "^4.6.0",
@@ -78,8 +80,6 @@
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-router-dom": "^6.2.1",
-    "rh-js-methods": "^2.1.10",
-    "rh-mock": "^1.2.0",
     "rollup": "^2.69.2",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-dts": "^4.2.0",
@@ -89,7 +89,7 @@
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.31.2",
-    "style-loader": "^2.0.0",
+    "style-loader": "^3.3.1",
     "ts-jest": "^29.1.1",
     "ts-loader": "^8.0.2",
     "ts-node": "^10.9.1",
@@ -99,9 +99,5 @@
     "webpack-cli": "^4.3.0",
     "webpack-dev-server": "^3.11.2",
     "webpack-merge": "^5.8.0"
-  },
-  "dependencies": {
-    "css-loader": "^6.7.1",
-    "style-loader": "^3.3.1"
   }
 }

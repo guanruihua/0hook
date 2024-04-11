@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ObjectType } from 'abandonjs'
+import { ObjectType } from '0type'
 import { isEffectArray, isNumber, isString } from 'asura-eye'
 
 /**
