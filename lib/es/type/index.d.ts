@@ -1,5 +1,6 @@
 import { ObjectType } from 'abandonjs';
 import { ObjectType as ObjectType$1 } from '0type';
+import { DependencyList } from 'react';
 
 /**
  * @title useBoolean
@@ -129,4 +130,7 @@ declare function useInterval(callback: () => void, delay: number | null): NodeJS
  */
 declare function useSetTimeout(callback: () => void, delay: number | null): void;
 
-export { Options, UseMapAction, UseObjectActions, UseSetState, UseStorageOption, UseStorageState, useBoolean, useCount, useInterval, useLocalStorage, useMap, useObject, useSessionStorage, useSetState, useSetTimeout, useStorage, useUpdate };
+type Result = void | Promise<void>;
+declare function useDebounceEffect(fn: () => Result | (() => Result), waitTime: number, deps?: DependencyList): void;
+
+export { Options, UseMapAction, UseObjectActions, UseSetState, UseStorageOption, UseStorageState, useBoolean, useCount, useDebounceEffect, useInterval, useLocalStorage, useMap, useObject, useSessionStorage, useSetState, useSetTimeout, useStorage, useUpdate };

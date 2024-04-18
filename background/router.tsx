@@ -18,6 +18,7 @@ const list = [
 	'useInterval',
 	'useSetTimeout',
 	'useValue',
+	'useDebounceEffect',
 ].map(name => {
 	return {
 		name,

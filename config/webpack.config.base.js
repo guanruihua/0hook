@@ -3,13 +3,11 @@ const webpack = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const ProgressBarWebpackPlugin = require('progress-bar-webpack-plugin')
+// const ProgressBarWebpackPlugin = require('progress-bar-webpack-plugin')
 // const { ESBuildPlugin } = require('esbuild-loader')
 
 module.exports = {
-  entry: {
-    app: './background/index.tsx'
-  },
+  entry: './background/index.tsx',
   output: {
     publicPath: '/',
     path: path.resolve(__dirname, '../dist'),
@@ -23,7 +21,7 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new ProgressBarWebpackPlugin(),
+    // new ProgressBarWebpackPlugin(),
     // new ESBuildPlugin(),
     new webpack.DefinePlugin({
       'process.env.PROJECT_ENV': JSON.stringify(process.env.PROJECT_ENV),
@@ -31,7 +29,9 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../public/index.html'),
-      filename: 'index.html'
+      filename: 'index.html',
+      hash: true,
+      cache: false
     }),
     new MiniCssExtractPlugin({
       filename: 'css/[name].[fullhash].css'
@@ -39,16 +39,16 @@ module.exports = {
   ],
   module: {
     rules: [
-      { test: /\.(js|jsx)$/, loader: 'babel-loader', exclude: /node_modules/ },
+      // { test: /\.(js|jsx)$/, loader: 'babel-loader', exclude: /node_modules/ },
       {
         test: /\.[jt]sx?$/,
         exclude: /node_modules/,
         loader: 'esbuild-loader',
         options: {
           loader: 'tsx',
-          target: 'esnext',
-          jsxFactory: 'React.createElement',
-          jsxFragment: 'React.Fragment'
+          // target: 'esnext',
+          // jsxFactory: 'React.createElement',
+          // jsxFragment: 'React.Fragment'
         }
       },
       {

@@ -6,19 +6,19 @@ const devServer = {
   port: 3456,
   open: false,
   // host: '0.0.0.0',
-  watchContentBase: true,
-  inline: true,
-  stats: 'errors-only',
+  // watchContentBase: true,
+  // inline: true,
+  // stats: 'errors-only',
   historyApiFallback: true,
   hot: true,
-  contentBase: path.join(__dirname, '../public'),
+  // contentBase: path.join(__dirname, '../public'),
   compress: true,
-  clientLogLevel: 'warning',
-  headers: { 'Access-Control-Allow-Origin': '*' },
+  // clientLogLevel: 'warning',
+  // headers: { 'Access-Control-Allow-Origin': '*' },
   // open: true,
-  watchOptions: {
-    ignored: /node_modules/,
-  },
+  // watchOptions: {
+  //   ignored: /node_modules/,
+  // },
 }
 
 const devConfig = {
