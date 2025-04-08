@@ -90,21 +90,23 @@ type UseSetState<T extends ObjectType$1> = readonly [
 /**
  * @title useSetState<T>
  * @description 类似 setState 的使用
- * @param initialState {T} 默认值
+ * @param {T} initialState 默认值
+ * @param {string} [cacheKey] 缓存索引
+ * @param  {Storage}[storage=localStorage] 缓存类型
  * @returns {UseSetState}
  */
-declare function useSetState<T extends ObjectType$1>(initialState?: T): UseSetState<T>;
+declare function useSetState<T extends ObjectType$1>(initialState?: T, cacheKey?: string, storage?: Storage): UseSetState<T>;
 
 interface UseStorageOption {
     storage?: Storage;
 }
-type UseStorageState<T = string> = readonly [
-    value: T | null,
-    setValue: (value: T) => void
+type UseStorageState = readonly [
+    value: string,
+    setValue: (value: string) => void
 ];
-declare function useStorage<T = string>(key: string, initialValue?: T | null, options?: UseStorageOption): UseStorageState<T>;
-declare const useLocalStorage: (key: string, initialValue?: string | null) => UseStorageState<string>;
-declare const useSessionStorage: (key: string, initialValue?: string | null) => UseStorageState<string>;
+declare function useStorage(key: string, initialValue?: string, options?: UseStorageOption): UseStorageState;
+declare const useLocalStorage: (key: string, initialValue?: string) => UseStorageState;
+declare const useSessionStorage: (key: string, initialValue?: string) => UseStorageState;
 
 /**
  * @title useUpdate

@@ -1,6 +1,6 @@
 {
   "name": "0hook",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "react hooks",
   "main": "lib/index.ts",
   "module": "lib/index.esm.js",
@@ -35,7 +35,7 @@
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0"
   },
   "devDependencies": {
-    "0type": "workspace:^0.1.0",
+    "0type": "^0.2.0",
     "@babel/core": "^7.11.1",
     "@babel/preset-env": "^7.15.0",
     "@babel/preset-react": "^7.10.4",

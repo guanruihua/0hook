@@ -14,8 +14,10 @@ export type UseSetState<T extends ObjectType> = readonly [
 /**
  * @title useSetState<T>
  * @description 类似 setState 的使用
- * @param initialState {T} 默认值
+ * @param {T} initialState 默认值
+ * @param {string} [cacheKey] 缓存索引
+ * @param  {Storage}[storage=localStorage] 缓存类型
  * @returns {UseSetState}
  */
-export declare function useSetState<T extends ObjectType>(initialState?: T): UseSetState<T>;
+export declare function useSetState<T extends ObjectType>(initialState?: T, cacheKey?: string, storage?: Storage): UseSetState<T>;
 //# sourceMappingURL=index.d.ts.map
