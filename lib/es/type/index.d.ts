@@ -1,6 +1,6 @@
 import { ObjectType } from 'abandonjs';
 import { ObjectType as ObjectType$1 } from '0type';
-import { DependencyList } from 'react';
+import React, { DependencyList } from 'react';
 
 /**
  * @title useBoolean
@@ -135,4 +135,14 @@ declare function useSetTimeout(callback: () => void, delay: number | null): void
 type Result = void | Promise<void>;
 declare function useDebounceEffect(fn: () => Result | (() => Result), waitTime: number, deps?: DependencyList): void;
 
-export { Options, UseMapAction, UseObjectActions, UseSetState, UseStorageOption, UseStorageState, useBoolean, useCount, useDebounceEffect, useInterval, useLocalStorage, useMap, useObject, useSessionStorage, useSetState, useSetTimeout, useStorage, useUpdate };
+/**
+ * @title useEventListener<T = any>
+ * @param {keyof WindowEventMap} type
+ * @param {(e:Event)=> T | undefined} listener 监听回调方法, 通过返回值对state赋值
+ * @param {T} [defaultValue]
+ * @param {boolean | AddEventListenerOptions} [options]
+ * @returns {[T | undefined, React.Dispatch<React.SetStateAction<T | undefined>>]}
+ */
+declare function useEventListener<T = any>(type: keyof WindowEventMap, listener: (e: Event) => T | undefined, defaultValue?: T, options?: boolean | AddEventListenerOptions): [T | undefined, React.Dispatch<React.SetStateAction<T | undefined>>];
+
+export { Options, UseMapAction, UseObjectActions, UseSetState, UseStorageOption, UseStorageState, useBoolean, useCount, useDebounceEffect, useEventListener, useInterval, useLocalStorage, useMap, useObject, useSessionStorage, useSetState, useSetTimeout, useStorage, useUpdate };

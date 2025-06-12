@@ -8,4 +8,5 @@ export * from './useUpdate';
 export * from './useInterval';
 export * from './useSetTimeout';
 export * from './useDebounceEffect';
+export * from './useEventListener';
 //# sourceMappingURL=index.d.ts.map
