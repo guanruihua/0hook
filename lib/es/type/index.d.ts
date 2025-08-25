@@ -145,4 +145,8 @@ declare function useDebounceEffect(fn: () => Result | (() => Result), waitTime: 
  */
 declare function useEventListener<T = any>(type: keyof WindowEventMap, listener: (e: Event) => T | undefined, defaultValue?: T, options?: boolean | AddEventListenerOptions): [T | undefined, React.Dispatch<React.SetStateAction<T | undefined>>];
 
-export { Options, UseMapAction, UseObjectActions, UseSetState, UseStorageOption, UseStorageState, useBoolean, useCount, useDebounceEffect, useEventListener, useInterval, useLocalStorage, useMap, useObject, useSessionStorage, useSetState, useSetTimeout, useStorage, useUpdate };
+declare function useEventController(): {
+    addEventListener: (target: any, event: keyof WindowEventMap, handler: (e: Event) => void, options?: AddEventListenerOptions) => void;
+};
+
+export { Options, UseMapAction, UseObjectActions, UseSetState, UseStorageOption, UseStorageState, useBoolean, useCount, useDebounceEffect, useEventController, useEventListener, useInterval, useLocalStorage, useMap, useObject, useSessionStorage, useSetState, useSetTimeout, useStorage, useUpdate };
